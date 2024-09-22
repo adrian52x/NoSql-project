@@ -6,3 +6,7 @@ const activitySchema = new Schema({
     description: { type: String, required: true },
     topicId: { type: Schema.Types.ObjectId, ref: "Topic", required: true },
 });
+
+const Activity = model("Activity", activitySchema);
+
+export default Activity;
