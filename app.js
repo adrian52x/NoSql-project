@@ -1,14 +1,30 @@
 import express from 'express';
 import mongoose from 'mongoose';
+
 import dotenv from 'dotenv';
+dotenv.config();
 
 import studentRouter from './Routes/studentRoutes.js';
+import activityRouter from './Routes/activityRoutes.js';
+import topicRouter from './Routes/topicRoutes.js';
+import enrolmentRouter from './Routes/enrolmentRoutes.js';
 
 // Create Express server
 const app = express();
-app.use(studentRouter);
 
-dotenv.config();
+// Middleware to parse JSON bodies
+app.use(express.json());
+
+// Middleware to parse URL-encoded bodies
+app.use(express.urlencoded({ extended: true }));
+
+// Your routes here
+app.use(studentRouter);
+app.use(activityRouter);
+app.use(topicRouter);
+app.use(enrolmentRouter);
+
+
 
 const mongoURI = process.env.MONGO_URI;
 
