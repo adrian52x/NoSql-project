@@ -15,13 +15,16 @@ router.get('/api/students', async (req, res) => {
     }
 });
 
-// Get all students with email ending in gmail.com
-router.get('/api/students/gmail', async (req, res) => {
+// Get students by email domain
+router.get('/api/students/email-domain', async (req, res) => {
+    const { domain } = req.query; // e.g., domain=gmail.com
     try {
-        const students = await Student.find({ email: /@gmail\.com$/ });
+        const students = await Student.find({
+            email: { $regex: `@${domain}$`, $options: 'i' }
+        });
         res.status(200).json(students);
     } catch (error) {
-        res.status(404).json({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 });
 

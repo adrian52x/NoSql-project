@@ -26,16 +26,16 @@ const seedTopics = async () => {
 
         // Predefined topics
         const topics = [
-            { title: 'What is a document database?', description: 'An overview of document databases.' },
-            { title: 'What is database normalization?', description: 'An explanation of database normalization.' },
-            { title: 'What is an entity relationship diagram?', description: 'An introduction to entity relationship diagrams.' },
-            { title: 'What is a document database method to Create/Read/Update/Delete data?', description: 'Methods to perform CRUD operations in document databases.' },
-            { title: 'How does a database connect to a Web Front End?', description: 'Explanation of how databases connect to web front ends.' },
-            { title: 'What is a relational database?', description: 'An overview of relational databases.' },
-            { title: 'What is a NoSQL database?', description: 'An introduction to NoSQL databases.' },
-            { title: 'What is database indexing?', description: 'An explanation of database indexing.' },
-            { title: 'What is a database transaction?', description: 'An overview of database transactions.' },
-            { title: 'What is database sharding?', description: 'An introduction to database sharding.' },
+            { topicTitle: 'What is a document database?', description: 'An overview of document databases.' },
+            { topicTitle: 'What is database normalization?', description: 'An explanation of database normalization.' },
+            { topicTitle: 'What is an entity relationship diagram?', description: 'An introduction to entity relationship diagrams.' },
+            { topicTitle: 'What is a document database method to Create/Read/Update/Delete data?', description: 'Methods to perform CRUD operations in document databases.' },
+            { topicTitle: 'How does a database connect to a Web Front End?', description: 'Explanation of how databases connect to web front ends.' },
+            { topicTitle: 'What is a relational database?', description: 'An overview of relational databases.' },
+            { topicTitle: 'What is a NoSQL database?', description: 'An introduction to NoSQL databases.' },
+            { topicTitle: 'What is database indexing?', description: 'An explanation of database indexing.' },
+            { topicTitle: 'What is a database transaction?', description: 'An overview of database transactions.' },
+            { topicTitle: 'What is database sharding?', description: 'An introduction to database sharding.' },
         ];
 
         // Insert predefined topics into the database

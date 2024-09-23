@@ -1,0 +1,11 @@
+1. Get students by email domain - done
+2. Get all enrolments for a student - done
+3. Get most popular activities - not
+4. Get all enrolments from last 5 days
+5. Get Topics with Specific Keywords - done
+
+
+
+TO DO:
+
+add  enrolmentsSeed.js

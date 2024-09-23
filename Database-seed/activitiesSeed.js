@@ -111,16 +111,16 @@ const seedDatabase = async () => {
 
         // Create activities for each topic
         for (const topicWithActivities of topicsWithActivities) {
-            const existingTopic = await Topic.findOne({ title: topicWithActivities.topic });
+            const existingTopic = await Topic.findOne({ topicTitle: topicWithActivities.topic });
             if (!existingTopic) {
                 console.log('Topics need to be seeded first.');
                 return;
             }
 
             // Create activities for the topic
-            const activities = topicWithActivities.activities.map(activityTitle => ({
-                title: activityTitle,
-                description: `Description for "${activityTitle}"`,
+            const activities = topicWithActivities.activities.map(title => ({
+                activityTitle: title,
+                description: `Description for "${title}"`,
                 topicId: existingTopic._id
             }));
 
