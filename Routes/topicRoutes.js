@@ -3,6 +3,7 @@ import Router from 'express';
 const router = Router();
 
 import Topic from '../Model/Topic.js';
+import Activity from '../Model/Activity.js';
 
 
 // Get topics with specific keywords
@@ -39,6 +40,30 @@ router.get('/api/topics/:id', async (req, res) => {
         }
 
         res.status(200).json(topic);
+    } catch (error) {
+        res.status(404).json({ error: error.message });
+    }
+});
+
+// Get all activities in a topic
+router.get('/api/topics/:id/activities', async (req, res) =>  {
+    try {
+        const {id} = req.params;
+
+        // find the topic by id
+        const topic = await Topic.findById(id);
+
+        if (!topic) {
+            return res.status(404).json({ error: 'Topic not found' });
+        }
+
+        // Find all activities related to the topic
+        const activities = await Activity.find({ topicId: id }).select('-topicId -__v');;
+
+        res.status(200).json({
+            topic,       // The topic details
+            activities,  // The activities related to the topic
+        });
     } catch (error) {
         res.status(404).json({ error: error.message });
     }

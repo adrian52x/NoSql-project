@@ -47,4 +47,4 @@ const seedStudents = async (numStudents) => {
 };
 
 // Seed the database with 50 random students
-seedStudents(50);
+seedStudents(20);

@@ -3,6 +3,8 @@ import Router from "express";
 const router = Router();
 
 import Enrolment from "../Model/Enrolment.js";
+import Student from "../Model/Student.js";
+import Activity from "../Model/Activity.js";
 
 // Get all enrolments
 router.get("/api/enrolments", async (req, res) => {
@@ -63,6 +65,39 @@ router.get("/api/enrolments/last-n-days/:days", async (req, res) => {
     res.status(200).json(enrolments);
   } catch (error) {
     res.status(404).json({ error: error.message });
+  }
+});
+
+// Get the most popular activities
+router.get("/api/enrolments/popular-activities", async (req, res) => {
+  try {
+    // Find all activities
+    const activities = await Activity.find();
+
+    // Create an array to hold activity popularity
+    const activityPopularity = [];
+
+    // Loop through each activity and count the number of enrolments
+    for (const activity of activities) {
+      const enrolmentCount = await Enrolment.countDocuments({
+        activityId: activity._id,
+      });
+      activityPopularity.push({
+        activityId: activity._id,
+        activityTitle: activity.activityTitle,
+        count: enrolmentCount,
+      });
+    }
+
+    // Sort activities by enrolment count in descending order
+    activityPopularity.sort((a, b) => b.count - a.count);
+
+    // Limit to top 5 activities
+    const topActivities = activityPopularity.slice(0, 5);
+
+    res.status(200).json(topActivities);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 });
 
