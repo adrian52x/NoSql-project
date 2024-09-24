@@ -34,8 +34,19 @@ router.get('/api/activities/:id', async (req, res) => {
 // Create a new activity
 router.post('/api/activities', async (req, res) => {
     try {
-        const newActivity = await Activity.create(req.body);
-        res.status(201).json(newActivity);
+
+        const { activityTitle, description, topicId } = req.body;
+
+        const activity = new Activity({
+            activityTitle,
+            description,
+            topicId
+        })
+
+
+        const savedActivity = await activity.save()
+
+        res.status(201).json(savedActivity);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

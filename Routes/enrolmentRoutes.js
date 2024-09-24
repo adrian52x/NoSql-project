@@ -59,8 +59,17 @@ router.get('/api/enrolments/student/:studentId', async (req, res) => {
 // Create a new enrolment
 router.post('/api/enrolments', async (req, res) => {
     try {
-        const newEnrolment = await Enrolment.create(req.body);
-        res.status(201).json(newEnrolment);
+        
+        const { studentId, activityId } = req.body;
+
+        const enrolment = new Enrolment({
+            studentId,
+            activityId
+        });
+
+        const savedEnrolment = await enrolment.save();
+
+        res.status(201).json(savedEnrolment);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

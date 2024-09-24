@@ -47,8 +47,17 @@ router.get('/api/topics/:id', async (req, res) => {
 // Create a new topic
 router.post('/api/topics', async (req, res) => {
     try {
-        const newTopic = await Topic.create(req.body);
-        res.status(201).json(newTopic);
+
+        const { topicTitle, description } = req.body;
+
+        const topic = new Topic({
+            topicTitle,
+            description
+        })
+
+        const savedTopic = await topic.save();
+
+        res.status(201).json(savedTopic);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
