@@ -16,6 +16,37 @@ router.get("/api/enrolments", async (req, res) => {
   }
 });
 
+// Get all enrolments for a student
+router.get('/api/enrolments/student/:studentId', async (req, res) => {
+    try {
+        const student = await Student.findById(req.params.studentId);
+
+        const enrolments = await Enrolment.find({ studentId: req.params.studentId })
+            .populate({
+                path: 'activityId',
+                populate: {
+                    path: 'topicId',
+                    model: 'Topic'
+                }
+            });
+
+        
+        if (enrolments.length === 0) {
+            return res.status(404).json({ error: 'No enrolments found for this student' });
+        }
+
+        const formattedResponse = {
+            _id: enrolments[0]._id,
+            studentFullName: `${student.firstName} ${student.lastName}`,
+            activities: enrolments.map(enrolment => enrolment.activityId) // activityId is an object (as it's populated)
+        };
+
+        res.status(200).json({ enrolments: formattedResponse });
+    } catch (error) {
+        res.status(404).json({ error: error.message });
+    }
+});
+
 // Get all enrolments from the last 2 days
 router.get("/api/enrolments/last2days", async (req, res) => {
   try {

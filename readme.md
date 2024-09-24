@@ -100,7 +100,11 @@ const enrolmentSchema = new Schema({
 - **Method**: `GET`
 - **Description**: Retrieves the most popular activities based on the number of enrolments.
 
-
+### Get all enrolments from the last N days
+- **Endpoint**: `/api/enrolments/last-n-days/:days`
+- **Method**: `GET`
+- **Description**: Get all enrolments from the last N days.
+- **Path Parameters**: `days` (number)
 
 ## Installation
 To install and set up the project, follow these steps:
