@@ -75,7 +75,7 @@ const enrolmentSchema = new Schema({
 - **Endpoint**: `/api/students/email-domain`
 - **Method**: `GET`
 - **Description**: Retrieves students with email addresses matching the specified domain.
-- **Query Parameters**: `domain` (e.g., `gmail.com`)
+- **Query Parameters**: `domain` (e.g., `/api/students/email-domain?domain=gmail.com`)
 
 ### Get All Activities in a Topic
 - **Endpoint**: `/api/topics/:id/activities`
@@ -87,7 +87,7 @@ const enrolmentSchema = new Schema({
 - **Endpoint**: `/api/topics/search`
 - **Method**: `GET`
 - **Description**: Searches for topics containing specific keywords.
-- **Query Parameters**: `keywords` (e.g., `document database`)
+- **Query Parameters**: `keywords` (e.g., `/api/topics/search?keywords=sharding+indexing+transactions`)
 
 ### Get All Enrolments for a Student
 - **Endpoint**: `/api/enrolments/student/:studentId`
