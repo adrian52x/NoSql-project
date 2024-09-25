@@ -5,6 +5,9 @@ const router = Router();
 import Student from '../Model/Student.js';
 
 
+
+
+
 // Get all students
 router.get('/api/students', async (req, res) => {
     try {
@@ -15,6 +18,10 @@ router.get('/api/students', async (req, res) => {
     }
 });
 
+
+
+
+
 // Get all students with email ending in gmail.com
 router.get('/api/students/gmail', async (req, res) => {
     try {
@@ -24,6 +31,10 @@ router.get('/api/students/gmail', async (req, res) => {
         res.status(404).json({ error: error.message });
     }
 });
+
+
+
+
 
 // Create a new student
 router.post('/api/students', async (req, res) => {
@@ -44,6 +55,10 @@ router.post('/api/students', async (req, res) => {
     }
 });
 
+
+
+
+
 // Update a student
 router.patch('/api/students/:id', async (req, res) => {
     try {
@@ -59,6 +74,10 @@ router.patch('/api/students/:id', async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 });
+
+
+
+
 
 // Delete a student
 router.delete('/api/students/:id', async (req, res) => {
