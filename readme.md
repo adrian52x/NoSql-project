@@ -4,13 +4,20 @@
 
 - [Introduction](#introduction)
 - [Used Tools](#used-tools)
-- [Features](#features)
+- [Entities and Relationships](#entities-and-relationships)
+- [APIs](#highlighted-api-endpoints)
 - [Installation](#installation)
 - [Usage](#usage)
 
 ## Introduction
 
 This project is focused on utilizing NoSQL databases to manage and store data efficiently. The aim is to demonstrate the advantages of NoSQL databases over traditional SQL databases in certain use cases.
+
+## Used Tools
+- [Node.js](https://nodejs.org/en/)
+- [Express](https://expressjs.com/)
+- [MongoDB](https://www.mongodb.com/)
+
 
 ## Entities and Relationships
 
